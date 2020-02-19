@@ -1,0 +1,15 @@
+{% extends 'my_blog/base.html' %}
+{% block content %}
+
+	<h2>You have logged out so you can log in below</h2>
+
+	<div class="border-top pt-5 mt-5 mb-5">
+		<p>
+			<a href="{% url 'user_login' %}">Log in agin</a>
+		</p>
+	</div>
+  
+  
+</form>
+
+{% endblock %}

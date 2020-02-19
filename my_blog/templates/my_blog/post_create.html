@@ -1,0 +1,24 @@
+{% extends 'my_blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	
+	<form method="POST" >
+			<p>Now you can create a new post </p>
+			<hr>
+	 		 <div class="form-group">
+	  		  
+			{% csrf_token %}
+			{{ form | crispy  }}
+			</div>
+			<button type="submit" class="btn btn-outline-info">Create a Post</button>
+			</form>
+			<div class="border-top pt-5 mt-5 mb-5">
+				<small>
+					Enjouy with our old posts ? <a href="{% url 'blog_home' %}">Go to Our Posts </a>
+				</small>
+			</div>
+		  
+		  
+		</form>
+
+{% endblock %}

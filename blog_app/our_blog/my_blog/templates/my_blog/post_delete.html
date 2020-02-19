@@ -1,0 +1,27 @@
+{% extends 'my_blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	
+	<form method="POST">
+		{% csrf_token %}
+			<p>Now you can delete a post</p>
+		
+	  		  
+			
+
+		
+		
+			<p>are you sure of eleting this post {{ object.title }}</p>
+			<button class="btn btn-outline-danger" type="submit">yes, delete</button>
+			<a class="btn btn-outline-secondary" href="{% url 'post_details' object.id %}">No Cansel</a>
+	</form>
+			<div class="border-top pt-5 mt-5 mb-5">
+				<small>
+					Enjouy with our old posts ? <a href="{% url 'blog_home' %}">Go to Our Posts </a>
+				</small>
+			</div>
+		  
+		  
+		</form>
+
+{% endblock %}

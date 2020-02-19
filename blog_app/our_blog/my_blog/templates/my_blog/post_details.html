@@ -1,0 +1,26 @@
+{% extends 'my_blog/base.html' %}
+{% block content %}
+	<div class="row post">
+		<div class="card" style="width: 50rem;">
+
+		  <div class="card-body">
+		    <div class="card-title post_date">
+		    	<img  src="{{ object.user.userprofile.image.url }}" style="width: 100px;height: 100px" class="rounded-circle article-img" >
+		    	{{ object.user.first_name }}, 
+		    	<span>{{ object.date_posted |date:"F d, Y"  }} </span> </div>
+		    <hr>
+		    <p class="card-text post_title">{{ object.title }}</p>
+		    <div>{{ object.content }}</div>
+		  </div>
+		</div>
+	</div>
+	    	{% if object.user == user  %}
+		     
+		        	<a class="nav-link" href="{% url 'post_delete' object.id %}">Delete post</a>
+		 
+		   
+		        	<a class="nav-link" href="{% url 'post_update' object.id %}">update post</a>
+		     
+	      	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'my_blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-{{ message.tags }} mt-10">
+					
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endif %}
+
+		<div class="card" style="width: 18rem;">
+		  <img draggable="false" src="{{ user.userprofile.image.url }}" class="card-img-top" alt="...">
+		  <div class="card-body">
+		    <h5 class="card-title">{{ user.username | upper }}</h5>
+		    <p class="card-text">{{ user.email | capfirst }}</p>
+		    {% if user.userprofile.date  %}
+		    	<p class="card-text">{{ user.userprofile.date | capfirst }}</p>
+		    {% endif %}
+		   
+		  </div>
+		</div>
+		<hr>
+
+		<form method="POST" enctype="multipart/form-data"> <!-- enctype to pass image also -->
+	  <div class="form-group">
+	  		  
+			{% csrf_token %}
+			{{ user_form | crispy  }}
+			{{ user_profile_form | crispy  }}
+			</div>
+			<button type="submit" class="btn btn-outline-info">Update your data</button>
+			</form>
+
+{% endblock %}
